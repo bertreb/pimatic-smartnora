@@ -1,0 +1,46 @@
+{
+  "name": "pimatic-smartnora",
+  "description": "Plugin for connecting a Pimatic system via Node-red and SmartNora to Google Assistant",
+  "author": {
+    "name": "Bert Gierveld",
+    "email": "gitbertreb@gmail.com",
+    "url": "https://github.com/bertreb"
+  },
+  "main": "pimatic-smartnora",
+  "files": [
+    "pimatic-smartnora.coffee",
+    "pimatic-smartnora-config-schema.coffee",
+    "device-config-schema.coffee",
+    "adapters/switch.coffee",
+    "adapters/button.coffee",
+    "adapters/blinds.coffee",
+    "adapters/light.coffee",
+    "README.md",
+    "LICENSE"
+  ],
+  "homepage": "https://github.com/bertreb/pimatic-smartnora.git",
+  "keywords": [
+    "pimatic",
+    "smartnora",
+    "node-red",
+    "google",
+    "assistant"
+  ],
+  "version": "0.3.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bertreb/pimatic-smartnora.git"
+  },
+  "configSchema": "pimatic-smartnora-config-schema.coffee",
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "node-red-contrib-smartnora": "^1.0.5"
+  },
+  "peerDependencies": {
+    "pimatic": "0.9.*"
+  },
+  "engines": {
+    "node": ">=4",
+    "npm": ">=2"
+  }
+}
