@@ -4,12 +4,12 @@ module.exports = (env) ->
   events = require 'events'
   rxjs = require("rxjs")
   operators = require("rxjs/operators")
-  #connection = require("../node_modules/node-red-contrib-smartnora/build/firebase/connection.js")
-  connection = require("../firebase/connection.js")
-  #device_context = require("../node_modules/node-red-contrib-smartnora/build/firebase/device-context.js")
-  device_context = require("../firebase/device-context.js")
-  #util = require("../node_modules/node-red-contrib-smartnora/build/nodes/util.js")
-  util = require("./util.js")
+  connection = require("../node_modules/node-red-contrib-smartnora/build/firebase/connection.js")
+  #connection = require("../firebase/connection.js")
+  device_context = require("../node_modules/node-red-contrib-smartnora/build/firebase/device-context.js")
+  #device_context = require("../firebase/device-context.js")
+  util = require("../node_modules/node-red-contrib-smartnora/build/nodes/util.js")
+  #util = require("./util.js")
   _ = require "lodash"
 
   class SwitchAdapter extends events.EventEmitter
