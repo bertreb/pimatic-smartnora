@@ -5,14 +5,13 @@ module.exports = {
     email:
       description: "The smartnora email"
       type: "string"
-      default: ""
     password:
       description: "The smartnora password"
       type: "string"
-      default: ""
     group:
       description: "The smartnora group"
       type: "string"
+      default: "pimatic"
     home:
       description: "The smartnora home name"
       type: "string"
