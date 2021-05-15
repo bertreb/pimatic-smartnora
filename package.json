@@ -25,7 +25,7 @@
     "google",
     "assistant"
   ],
-  "version": "0.3.1",
+  "version": "0.3.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bertreb/pimatic-smartnora.git"
@@ -34,7 +34,11 @@
   "dependencies": {
     "lodash": "^4.17.21",
     "node-red-contrib-smartnora": "^1.0.5",
-    "rxjs": "^7.0.1"
+    "rxjs": "^7.0.1",
+    "@andrei-tatar/nora-firebase-common": "^1.0.50",
+    "cbor": "^7.0.5",
+    "firebase": "^8.4.3",
+    "node-fetch": "^2.6.1"
   },
   "peerDependencies": {
     "pimatic": "0.9.*"
