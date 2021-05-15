@@ -3,15 +3,15 @@ Plugin for smartnora
 
 Background
 -------
-The Smartnora plugin lets you connect a Pimatic home automation system to a Google assistant via Smartnora.
+The SmartNora plugin lets you connect a Pimatic home automation system to a Google assistant via SmartNora.
 
 
-Smartnora is a Smart **NO**de-**R**ed home **A**utomation solution for connecting Node-red to Google Home/Assistant. Smartora is build by [Andrei Tatar](https://github.com/andrei-tatar/node-red-contrib-smartnora). Smartnora is a followup of Nora. That free service stopped as a result of its success.
-Smartnora consists of a plugin for node-red (node-red-contrib-smartnora) and the Smartnora cloud logic (Firebase) that acts as a gateway between node-red and Google Assistant.
-For this plugin I'm not using node-red but refactored the Smartnora node-red plugin to fit Pimatic.
+SmartNora is a Smart **NO**de-**R**ed home **A**utomation solution for connecting Node-red to Google Home/Assistant. SmartNora is build by [Andrei Tatar](https://github.com/andrei-tatar/node-red-contrib-smartnora). SmartNora is a followup of Nora. That free service stopped as a result of its success.
+SmartNora consists of a plugin for node-red (node-red-contrib-smartnora) and the SmartNora cloud logic (Firebase) that acts as a gateway between node-red and Google Assistant.
+For this plugin I'm not using node-red but refactored the SmartNora node-red plugin to fit Pimatic.
 This plugin is a replacement of Pimatic-assistant. That plugin is based on the retired Nora service.
 
-The Pimatic Devices interface with Google Assistant via Smartnora. Pimatic devices are added in the config. The mapping of states and actions from Pimatic from/to Google Assistant is done as best as possible.
+The Pimatic Devices interface with Google Assistant via . Pimatic devices are added in the config. The mapping of states and actions from Pimatic from/to Google Assistant is done as best as possible.
 
 Preparation
 ---------
@@ -19,7 +19,7 @@ Before you can configure the plugin you need to get a Nora service token. The st
 
 - Go to the [SmartNora homepage](https://smart-nora.eu/)
 - Create a login with an email address and password. 
-- When you are logged in, the Smartnora service is created and under 'My NORA' you can see your devices and the user id (not needed for the pimatic plugin)
+- When you are logged in, the SmartNora service is created and under 'My NORA' you can see your devices and the user id (not needed for the pimatic plugin)
 - The email address and password are user in the device config of the plugin.
 
 Link Nora to your Google Home via the Google Home app (these steps need to happen only once).
@@ -35,7 +35,7 @@ Pimatic devices are not exposed automatically to Smart Nora and Google Assistant
 
 Installation
 ------------
-To enable the Smartnora plugin add this to the plugins section via the GUI or add it in the config.json file.
+To enable the SmartNora plugin add this to the plugins section via the GUI or add it in the config.json file.
 
 ```
 {
@@ -51,7 +51,7 @@ To enable the Smartnora plugin add this to the plugins section via the GUI or ad
 }
 ```
 
-After the plugin is installed a Smartnora device can be added.
+After the plugin is installed a SmartNora device can be added.
 
 SmartNora device
 -----------------
