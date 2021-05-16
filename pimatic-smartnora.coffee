@@ -2,11 +2,11 @@ module.exports = (env) ->
   Promise = env.require 'bluebird'
   assert = env.require 'cassert'
   switchAdapter = require('./adapters/switch')(env)
-  #lightAdapter = require('./adapters/light')(env)
+  lightAdapter = require('./adapters/light')(env)
   #lightColorAdapter = require('./adapters/lightcolor')(env)
   #sensorAdapter = require('./adapters/sensor')(env)
-  #buttonAdapter = require('./adapters/button')(env)
-  #blindAdapter = require('./adapters/blinds')(env)
+  buttonAdapter = require('./adapters/button')(env)
+  blindAdapter = require('./adapters/blinds')(env)
 
   _ = require('lodash')
   M = env.matcher
@@ -164,7 +164,6 @@ module.exports = (env) ->
               switch selectedAdapter
                 when "switch"
                   @adapters[pimaticDeviceId] = new switchAdapter(_device, pimaticDevice, @smartnoraConfig)
-                  ###
                 when "light"
                   @adapters[pimaticDeviceId] = new lightAdapter(_device, pimaticDevice, @smartnoraConfig)
                 when "button"
@@ -172,7 +171,6 @@ module.exports = (env) ->
                   @adapters[_pimaticDeviceId] = new buttonAdapter(_device, pimaticDevice, @smartnoraConfig)
                 when "blind"
                   @adapters[pimaticDeviceId] = new blindAdapter(_device, pimaticDevice, @smartnoraConfig)
-                  ###
                 else
                   env.logger.debug "Device type #{pimaticDevice.config.class} is not supported!"
             catch e
@@ -183,6 +181,14 @@ module.exports = (env) ->
 
     selectAdapter: (pimaticDevice, aux1, aux2) =>
       _foundAdapter = null
+      if (pimaticDevice.config.class).toLowerCase().indexOf("switch") >= 0
+        _foundAdapter = "switch"
+      else if (pimaticDevice.config.class).toLowerCase().indexOf("dimmer") >= 0
+        _foundAdapter = "light"
+      else if pimaticDevice instanceof env.devices.ButtonsDevice
+        _foundAdapter = "button"
+      else if pimaticDevice instanceof env.devices.ShutterController
+        _foundAdapter = "blind"
       ###
       if pimaticDevice.config.class is "MilightRGBWZone" or pimaticDevice.config.class is "MilightFullColorZone"
         _foundAdapter = "lightColorMilight"
@@ -202,16 +208,6 @@ module.exports = (env) ->
         _foundAdapter = "lightColor"
       else if (pimaticDevice.config.class).toLowerCase().indexOf("luftdaten") >= 0
         _foundAdapter = "sensor"
-      ###
-      if (pimaticDevice.config.class).toLowerCase().indexOf("switch") >= 0
-        _foundAdapter = "switch"
-      ###
-      else if (pimaticDevice.config.class).toLowerCase().indexOf("dimmer") >= 0
-        _foundAdapter = "light"
-      else if pimaticDevice instanceof env.devices.ButtonsDevice
-        _foundAdapter = "button"
-      else if pimaticDevice instanceof env.devices.ShutterController
-        _foundAdapter = "blind"
       else if pimaticDevice instanceof env.devices.DummyHeatingThermostat
         _foundAdapter = "heatingThermostat"
       else if pimaticDevice.config.class is "DummyThermostat"

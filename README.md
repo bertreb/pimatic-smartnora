@@ -98,4 +98,4 @@ Before you delete a SmartNora device, please remove first all Pimatic devices in
 
 -----------------
 
-The minimum node requirement for this plugin is node **v10.22.0**. You could backup Pimatic before you are using this plugin!
+The minimum node requirement for this plugin is node **v10.24.1**. You could backup Pimatic before you are using this plugin!
