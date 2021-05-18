@@ -27,8 +27,6 @@ module.exports = (env) ->
         valid: true
         localExecution: false
 
-      env.logger.debug("noraCONFIG:" + JSON.stringify(noraConfig,null,2))
-
       if !(noraConfig? and noraConfig.valid)
         return
 

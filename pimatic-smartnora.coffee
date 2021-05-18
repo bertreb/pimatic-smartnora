@@ -6,7 +6,7 @@ module.exports = (env) ->
   #lightColorAdapter = require('./adapters/lightcolor')(env)
   #sensorAdapter = require('./adapters/sensor')(env)
   buttonAdapter = require('./adapters/button')(env)
-  blindAdapter = require('./adapters/blinds')(env)
+  #blindAdapter = require('./adapters/blinds')(env)
 
   _ = require('lodash')
   M = env.matcher
@@ -203,8 +203,6 @@ module.exports = (env) ->
                 when "button"
                   _pimaticDeviceId = pimaticDeviceId + '.' + _device.pimatic_subdevice_id
                   @adapters[_pimaticDeviceId] = new buttonAdapter(_device, pimaticDevice, @smartnoraConfig)
-                when "blind"
-                  @adapters[pimaticDeviceId] = new blindAdapter(_device, pimaticDevice, @smartnoraConfig)
                 else
                   env.logger.debug "Device type #{pimaticDevice.config.class} is not supported!"
             catch e
@@ -221,9 +219,9 @@ module.exports = (env) ->
         _foundAdapter = "light"
       else if pimaticDevice instanceof env.devices.ButtonsDevice
         _foundAdapter = "button"
+      ###
       else if pimaticDevice instanceof env.devices.ShutterController
         _foundAdapter = "blind"
-      ###
       if pimaticDevice.config.class is "MilightRGBWZone" or pimaticDevice.config.class is "MilightFullColorZone"
         _foundAdapter = "lightColorMilight"
       if ((pimaticDevice.config.class).toLowerCase()).indexOf("rgb") >= 0
