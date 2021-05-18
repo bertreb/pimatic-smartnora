@@ -57,17 +57,13 @@ SmartNora device
 -----------------
 The SmartNora device is the main device for adding Pimatic devices to Google SmartNora. When you add/remove a supported Pimatic device to the SmartNora devicelist, the device is automatically added/removed in SmartNora and Google Assistant.
 
-Below the settings with the default values. In the devices your configure which Pimatic devices will be controlled by Google Assistant and what name they get. The name is visible in the Google Assistant and is the name you use in voice commands.
-In this release the SwitchActuator, DimmerActuator, ButtonsDevice and ShutterController based Pimatic devices are supported.
+Below the settings with the default values. In the devices your configure which Pimatic devices will be controlled by Google Assistant. The name is visible in the Google Assistant and is the name you use in voice commands.
+In this release the SwitchActuator, DimmerActuator and ButtonsDevice based Pimatic devices are supported.
 When there's at least 1 device added, the connection to Nora is made. When connected the dot will go to present.
 
 Some specific configurations:
 #### Button
 For the Buttons device the auxiliary field is used to identify the button. The id of the button can not contain a hyphen ('-'). You can use an underscore to make the id readable.
-
-#### Shutter
-For the Shutter device the auxiliary field is used to control a shutter via a shell script. The position of the shutter (the value) is added at the end of the script (with a space) before executing the script. A return value is used as actual shutter position.
-
 
 Device configuration
 -----------------
