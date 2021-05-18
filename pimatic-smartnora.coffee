@@ -36,6 +36,36 @@ module.exports = (env) ->
         createCallback: (config, lastState) => new SmartNoraDevice(config, lastState, @framework, @)
       })
 
+      @pimaticReady = false
+      @framework.on 'server listen', (res)=>
+        @pimaticReady = true
+        @emit 'pimaticReady'
+
+      ###
+      process.on "exit", () =>
+        tobeDestroyed = []
+        env.logger.debug "Close devices remove all adapters"
+        for i, adapter of @adapters
+          _i = i
+          tobeDestroyed.push removeAdapter = (_i)=>
+            return new Promise (resolve,reject) =>
+              @adapters[id].destroy()
+              .then (id)=>
+                env.logger.debug "Destroy executed"
+                delete @adapters[id]
+                env.logger.debug "Adapter #{id} deleted"
+                resolve()
+        env.logger.debug "Nr tobeDestroyed adapters: " + JSON.stringify(tobeDestroyed,null,2)
+        Promise.all(tobeDestroyed)
+        .then ()=>
+          env.logger.debug "Adapters deleted, waiting for exit..."
+          setTimeout(()=>
+            process.exit()
+            env.logger.debug "Stopping plugin SmartNora"
+          , 10000)
+      ###
+
+
   class SmartNoraDevice extends env.devices.PresenceSensor
 
     constructor: (@config, lastState, @framework, plugin) ->
@@ -65,8 +95,12 @@ module.exports = (env) ->
       @configDevices = []
       @nrOfDevices = 0
 
-      @framework.variableManager.waitForInit()
-      .then ()=>
+      if @plugin.pimaticReady
+        env.logger.debug "Starting SmartNora..."
+        @initSmartNora()
+
+      @plugin.on 'pimaticReady', @pimaticReadyHandler = ()=>
+        env.logger.debug "Starting SmartNora..."
         @initSmartNora()
 
       @framework.on "deviceRemoved", (device) =>
@@ -225,14 +259,11 @@ module.exports = (env) ->
       return _foundAdapter
 
     destroy: =>
-      ###
-      for i, adapter of @plugin.adapters
-        env.logger.debug "Checking adapter " + i
-        @plugin.adapters[i].destroy()
-        .then (_i)=>
-          delete @plugin.adapters[_i]
-          env.logger.debug "Adapter '#{_i}' deleted"
-      ### 
+      @plugin.removeListener 'pimaticReady', @pimaticReadyHandler if @pimaticReadyHandler?
+      for i, adapter of @adapters
+        _i = i
+        @plugin.adapters[_i].destroy()
+        delete @plugin.adapters[_i]
       super()
 
   plugin = new SmartNoraPlugin

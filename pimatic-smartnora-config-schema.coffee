@@ -11,7 +11,6 @@ module.exports = {
     group:
       description: "The smartnora group"
       type: "string"
-      default: "pimatic"
     home:
       description: "The smartnora home name"
       type: "string"
