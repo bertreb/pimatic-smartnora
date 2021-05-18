@@ -17,7 +17,7 @@ Preparation
 Before you can configure the plugin you need to get a Nora service token. The steps are:
 
 - Go to the [SmartNora homepage](https://smart-nora.eu/)
-- Create a login with an email address and password. 
+- Create a login with an email address and password.
 - When you are logged in, the SmartNora service is created and under 'My NORA' you can see your devices and the user id (not needed for the pimatic plugin)
 - The email address and password are user in the device config of the plugin.
 
@@ -42,7 +42,8 @@ To enable the SmartNora plugin add this to the plugins section via the GUI or ad
   email:  The email address from smartnora account
   password: The password from smartnora account
   group: name for grouping the devices of this assistant device (default = 'pimatic')
-  home: suggested name for the structure (structureHint) where this device is installed. Google attempts to use this value during user setup
+  home: suggested name for the structure (structureHint) where this device is installed.
+  Google attempts to use this value during user setup
   localexecution: if checked will enable local execution support for devices that use this configuration
   twofa: ["node", "pin", "ack"] If 'node' is selected twofa can be set per device
   twofapin: number used as pincode when twofa = pin
