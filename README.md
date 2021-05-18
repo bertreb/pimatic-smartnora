@@ -1,13 +1,12 @@
 # pimatic-smartnora
-Plugin for smartnora
+Plugin for connecting a Pimatic home automation system to a Google assistant via SmartNora
 
 Background
 -------
-The SmartNora plugin lets you connect a Pimatic home automation system to a Google assistant via SmartNora.
-
-
 SmartNora is a Smart **NO**de-**R**ed home **A**utomation solution for connecting Node-red to Google Home/Assistant. SmartNora is build by [Andrei Tatar](https://github.com/andrei-tatar/node-red-contrib-smartnora). SmartNora is a followup of Nora. That free service stopped as a result of its success.
+
 SmartNora consists of a plugin for node-red (node-red-contrib-smartnora) and the SmartNora cloud logic (Firebase) that acts as a gateway between node-red and Google Assistant.
+
 For this plugin I'm not using node-red but refactored the SmartNora node-red plugin to fit Pimatic.
 This plugin is a replacement of Pimatic-assistant. That plugin is based on the retired Nora service.
 
