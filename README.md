@@ -43,7 +43,7 @@ To enable the SmartNora plugin add this to the plugins section via the GUI or ad
   password: The password from smartnora account
   group: name for grouping the devices of this assistant device (default = 'pimatic')
   home: suggested name for the structure (structureHint) where this device is installed.
-  Google attempts to use this value during user setup
+        Google attempts to use this value during user setup
   localexecution: if checked will enable local execution support for devices that use this configuration
   twofa: ["node", "pin", "ack"] If 'node' is selected twofa can be set per device
   twofapin: number used as pincode when twofa = pin
